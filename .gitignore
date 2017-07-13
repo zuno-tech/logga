@@ -99,3 +99,4 @@ capybara-*html
 
 # RSpec
 /spec/reports/
+.rspec_status
