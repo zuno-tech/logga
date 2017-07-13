@@ -6,12 +6,12 @@ require "logga/version"
 Gem::Specification.new do |spec|
   spec.name          = "logga"
   spec.version       = Logga::VERSION
-  spec.authors       = ["Lorenzo Tello"]
-  spec.email         = ["ltello@zonedigital.com"]
+  spec.authors       = ["Stuart Chinery, Rob Hesketh, Lorenzo Tello"]
+  spec.email         = ["stuart.chinery@gmail.com, contact@robhesketh.com, ltello8a@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = "Extensions to ActiveRecord to log entries on model changes"
+  spec.description   = "Extensions to ActiveRecord to log entries on model changes"
+  spec.homepage      = "https://github.com/ltello/logga"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
