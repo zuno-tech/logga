@@ -22,7 +22,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add this to your model:
+
+```ruby
+class Order < ApplicationRecord
+  add_log_entries_for :create, :update
+end
+
+```
+
+so that new LogEntry records attached to a given Order instance will be created whenever a new one is created or
+modified.
 
 ## Development
 
