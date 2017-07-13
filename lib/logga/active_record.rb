@@ -3,8 +3,8 @@ module Logga
     extend ActiveSupport::Concern
 
     class_methods do
-      def add_log_entries_for_updates!
-        around_update :log_model_changes
+      def add_log_entries_for(*actions)
+        around_update :log_model_changes if actions.include?(:update)
       end
     end
 
