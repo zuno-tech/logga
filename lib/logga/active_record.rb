@@ -34,11 +34,13 @@ module Logga
     end
 
     def log_field_changes(changes)
-      body_generator = ->(record, field, old_value, new_value) { default_change_log_body(record, field, old_value, new_value) }
-      body = changes.inject([]) do |body, (field, (old_value, new_value))|
-        body << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
-      end.join('\n')
-      log_receiver.log_entries.create(author_data.merge(body: body))
+      if changes.present?
+        body_generator = ->(record, field, old_value, new_value) { default_change_log_body(record, field, old_value, new_value) }
+        body = changes.inject([]) do |result, (field, (old_value, new_value))|
+          result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
+        end.join('\n')
+        log_receiver.log_entries.create(author_data.merge(body: body))
+      end
     end
 
     def author_data
