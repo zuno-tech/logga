@@ -44,7 +44,7 @@ module Logga
     end
 
     def author_data
-      data = Hash(log_receiver.author).with_indifferent_access
+      data = Hash(log_receiver.try(:author) || try(:author)).with_indifferent_access
       {
           author_id:   data[:id],
           author_type: data[:type],
@@ -60,7 +60,7 @@ module Logga
     end
 
     def default_change_log_body(record, field, old_value, new_value)
-      "#{record.class.name.demodulize} #{field} set to #{new_value}"
+      "#{record.class.name.demodulize.titleize} #{field} set to #{new_value}"
     end
   end
 end
