@@ -23,13 +23,13 @@ module Logga
     def log_model_creation
       body_generator = ->(record) { default_creation_log_body(record) }
       body = log_fields.fetch(:created_at, body_generator).call(self)
-      log_receiver.log_entries.create(author_data.merge(body: body))
+      log_receiver&.log_entries&.create(author_data.merge(body: body))
     end
 
     def log_model_deletion
       body_generator = ->(record) {default_deletion_log_body(record)}
       body           = log_fields.fetch(:deleted_at, body_generator).call(self)
-      log_receiver.log_entries.create(author_data.merge(body: body))
+      log_receiver&.log_entries&.create(author_data.merge(body: body))
     end
 
     def log_model_changes
@@ -46,7 +46,7 @@ module Logga
         body = changes.inject([]) do |result, (field, (old_value, new_value))|
           result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
         end.join('\n')
-        log_receiver.log_entries.create(author_data.merge(body: body))
+        log_receiver&.log_entries&.create(author_data.merge(body: body))
       end
     end
 
