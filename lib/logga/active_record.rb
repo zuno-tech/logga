@@ -50,6 +50,8 @@ module Logga
       end
     end
 
+    private
+
     def author_data
       data = Hash(log_receiver.try(:author) || try(:author)).with_indifferent_access
       {
@@ -61,20 +63,24 @@ module Logga
 
     def default_creation_log_body(record)
       [
-        "#{record.class.name.demodulize} created",
+        "#{titleized_model_class_name(record)} created",
         ("(#{record.state})" if record.try(:state))
       ].compact.join(' ')
     end
 
     def default_change_log_body(record, field, old_value, new_value)
-      "#{record.class.name.demodulize.titleize} #{field} set to #{new_value}"
+      "#{titleized_model_class_name(record)} #{field} set to #{new_value}"
     end
 
     def default_deletion_log_body(record)
       [
-        "#{record.class.name.demodulize} removed",
+        "#{titleized_model_class_name(record)} removed",
         ("(#{record.name})" if record.try(:name))
       ].compact.join(' ')
+    end
+
+    def titleized_model_class_name(record)
+      record.class.name.demodulize.titleize
     end
   end
 end
