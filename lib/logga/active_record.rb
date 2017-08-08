@@ -69,7 +69,7 @@ module Logga
     end
 
     def default_change_log_body(record, field, old_value, new_value)
-      "#{titleized_model_class_name(record)} #{field} set to #{new_value}"
+      "#{titleized_model_class_name(record)} #{field.humanize(capitalize: false)} set to #{new_value}"
     end
 
     def default_deletion_log_body(record)
