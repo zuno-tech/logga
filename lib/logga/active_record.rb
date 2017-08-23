@@ -41,13 +41,9 @@ module Logga
     end
 
     def log_field_changes(changes)
-      if changes.present?
-        body_generator = ->(record, field, old_value, new_value) { default_change_log_body(record, field, old_value, new_value) }
-        body = changes.inject([]) do |result, (field, (old_value, new_value))|
-          result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
-        end.compact.join('\n')
-        log_receiver&.log_entries&.create(author_data.merge(body: body))
-      end
+      return if changes.blank?
+      body = field_changes_to_message(changes)
+      log_receiver&.log_entries&.create(author_data.merge(body: body)) if body.present?
     end
 
     private
@@ -59,6 +55,13 @@ module Logga
           author_type: data[:type],
           author_name: data[:name]
       }
+    end
+
+    def field_changes_to_message(changes)
+      body_generator = ->(record, field, old_value, new_value) {default_change_log_body(record, field, old_value, new_value)}
+      changes.inject([]) do |result, (field, (old_value, new_value))|
+        result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
+      end.compact.join('\n')
     end
 
     def default_creation_log_body(record)
