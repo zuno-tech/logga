@@ -6,17 +6,20 @@ module Logga
     EXCLUDED_KEYS_SUFFIXES = [:_id, :_filenames]
 
     included do
-      class_attribute :log_fields, instance_writer: false
-      self.log_fields = {}
+      class_attribute :log_fields,      instance_writer: false
+      class_attribute :excluded_fields, instance_writer: false
+      self.log_fields      = {}
+      self.excluded_fields = {}
     end
 
     class_methods do
-      def add_log_entries_for(*actions, to: :self, fields: {})
+      def add_log_entries_for(*actions, to: :self, fields: {}, exclude_fields: []
         after_create  :log_model_creation if actions.include?(:create)
         after_destroy :log_model_deletion if actions.include?(:delete)
         after_update  :log_model_changes  if actions.include?(:update)
         define_method(:log_receiver) { to == :self ? self : send(to) }
-        self.log_fields = fields
+        self.log_fields      = fields
+        self.excluded_fields = Array(exclude_fields)
       end
     end
 
@@ -34,7 +37,8 @@ module Logga
 
     def log_model_changes
       field_changes = changes.reject do |k, _|
-        EXCLUDED_KEYS.include?(k.to_sym) ||
+        excluded_fields.include?(k.to_sym) ||
+        EXCLUDED_KEYS.include?(k.to_sym)   ||
         EXCLUDED_KEYS_SUFFIXES.any? { |suffix| k.to_s.end_with?(suffix.to_s) }
       end
       log_field_changes(field_changes)
