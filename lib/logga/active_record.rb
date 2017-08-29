@@ -13,7 +13,7 @@ module Logga
     end
 
     class_methods do
-      def add_log_entries_for(*actions, to: :self, fields: {}, exclude_fields: []
+      def add_log_entries_for(*actions, to: :self, fields: {}, exclude_fields: [])
         after_create  :log_model_creation if actions.include?(:create)
         after_destroy :log_model_deletion if actions.include?(:delete)
         after_update  :log_model_changes  if actions.include?(:update)
