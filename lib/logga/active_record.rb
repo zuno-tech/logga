@@ -61,7 +61,7 @@ module Logga
       body_generator = ->(record, field, old_value, new_value) {default_change_log_body(record, field, old_value, new_value)}
       changes.inject([]) do |result, (field, (old_value, new_value))|
         result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
-      end.compact.join('\n')
+      end.compact.join("\n")
     end
 
     def default_creation_log_body(record)
