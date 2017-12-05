@@ -2,7 +2,7 @@ module Logga
   module ActiveRecord
     extend ActiveSupport::Concern
 
-    EXCLUDED_KEYS          = [:created_at, :deleted_at, :initial, :updated_at, :log, :sent_photos_chaser_email, :sent_after_sales_emails]
+    EXCLUDED_KEYS          = [:id, :created_at, :deleted_at, :initial, :updated_at, :log, :sent_photos_chaser_email, :sent_after_sales_emails]
     EXCLUDED_KEYS_SUFFIXES = [:_id, :_filenames]
 
     included do
