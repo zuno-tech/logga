@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug",       "~> 5.0"
   spec.add_development_dependency "simplecov"
 
-  spec.add_runtime_dependency "activerecord",     "~> 5.0"
-  spec.add_runtime_dependency "activesupport",    "~> 5.0"
+  spec.add_runtime_dependency "activerecord",     "~> 5.2"
+  spec.add_runtime_dependency "activesupport",    "~> 5.2"
 end

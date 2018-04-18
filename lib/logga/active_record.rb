@@ -36,7 +36,7 @@ module Logga
     end
 
     def log_model_changes
-      field_changes = changes.reject do |k, _|
+      field_changes = previous_changes.reject do |k, _|
         excluded_fields.include?(k.to_sym) ||
         EXCLUDED_KEYS.include?(k.to_sym)   ||
         EXCLUDED_KEYS_SUFFIXES.any? { |suffix| k.to_s.end_with?(suffix.to_s) }
