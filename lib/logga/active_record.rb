@@ -26,7 +26,8 @@ module Logga
     def log_model_creation
       body_generator = ->(record) { default_creation_log_body(record) }
       body = log_fields.fetch(:created_at, body_generator).call(self)
-      log_receiver&.log_entries&.create(author_data.merge(body: body))
+      creation_at = (log_receiver&.log_entries&.order(:created_at)&.first&.created_at || Time.current) - 0.1.seconds
+      log_receiver&.log_entries&.create(author_data.merge(body: body, created_at: creation_at))
     end
 
     def log_model_deletion
