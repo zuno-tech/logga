@@ -62,7 +62,7 @@ module Logga
     end
 
     def creation_at
-      return Time.current unless og_receiver == self
+      return Time.current unless log_receiver == self
       (log_receiver&.log_entries&.order(:created_at)&.first&.created_at || Time.current) - 0.1.seconds
     end
 
