@@ -25,8 +25,7 @@ module Logga
 
     def log_model_creation
       body_generator = ->(record) { default_creation_log_body(record) }
-      body = log_fields.fetch(:created_at, body_generator).call(self)
-      creation_at = (log_receiver&.log_entries&.order(:created_at)&.first&.created_at || Time.current) - 0.1.seconds
+      body           = log_fields.fetch(:created_at, body_generator).call(self)
       log_receiver&.log_entries&.create(author_data.merge(body: body, created_at: creation_at))
     end
 
@@ -62,11 +61,9 @@ module Logga
       }
     end
 
-    def field_changes_to_message(changes)
-      body_generator = ->(record, field, old_value, new_value) {default_change_log_body(record, field, old_value, new_value)}
-      changes.inject([]) do |result, (field, (old_value, new_value))|
-        result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
-      end.compact.join("\n")
+    def creation_at
+      return Time.current unless og_receiver == self
+      (log_receiver&.log_entries&.order(:created_at)&.first&.created_at || Time.current) - 0.1.seconds
     end
 
     def default_creation_log_body(record)
@@ -85,6 +82,13 @@ module Logga
         "#{titleized_model_class_name(record)} removed",
         ("(#{record.name})" if record.try(:name))
       ].compact.join(' ')
+    end
+
+    def field_changes_to_message(changes)
+      body_generator = ->(record, field, old_value, new_value) { default_change_log_body(record, field, old_value, new_value) }
+      changes.inject([]) do |result, (field, (old_value, new_value))|
+        result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
+      end.compact.join("\n")
     end
 
     def titleized_model_class_name(record)
