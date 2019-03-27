@@ -38,7 +38,25 @@ modified.
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then `git push gemfury master` where gemfury remote is `https://[YOUR GEM FURY USER NAME]git.fury.io/boxt/logga_engine.git`.
+To install this gem onto your local machine, run `bundle exec rake install`.
+
+To release a new version, update the version number in `version.rb`.
+
+## Publishing to Gemfury
+
+After setting the new version as explained above you will now need to push the new version to Gemfury. To do this carry out the following steps:
+
+Add the Gemfury remote (you only need to do this once):
+
+```sh
+git remote add fury https://git.fury.io/boxt/logga.git
+```
+
+And then push the new code to Gemfury:
+
+```sh
+git push fury master
+```
 
 ## Contributing
 
