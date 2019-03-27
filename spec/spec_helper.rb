@@ -2,7 +2,6 @@
 
 require "bundler/setup"
 require "logga"
-require 'factory_girl'
 require "simplecov"
 
 SimpleCov.start
@@ -16,10 +15,5 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
-  end
-
-  config.include FactoryGirl::Syntax::Methods
-  config.before(:suite) do
-    FactoryGirl.find_definitions
   end
 end
