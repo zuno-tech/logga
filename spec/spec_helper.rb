@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require "bundler/setup"
 require "logga"
 require 'factory_girl'
+require "simplecov"
 
-require 'simplecov'
 SimpleCov.start
 
 RSpec.configure do |config|

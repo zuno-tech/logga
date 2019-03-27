@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Logga
   module ActiveRecord
     extend ActiveSupport::Concern
 
-    EXCLUDED_KEYS          = [:id, :created_at, :deleted_at, :initial, :updated_at, :log, :sent_after_sales_emails]
-    EXCLUDED_KEYS_SUFFIXES = [:_id, :_filenames]
+    EXCLUDED_KEYS          = %i[id created_at deleted_at initial updated_at log sent_after_sales_emails].freeze
+    EXCLUDED_KEYS_SUFFIXES = %i[_id _filenames].freeze
 
     included do
       class_attribute :log_fields,      instance_writer: false
