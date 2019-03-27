@@ -40,25 +40,9 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 To release a new version, update the version number in `version.rb`.
 
-## Publishing to Gemfury
-
-After setting the new version as explained above you will now need to push the new version to Gemfury. To do this carry out the following steps:
-
-Add the Gemfury remote (you only need to do this once):
-
-```sh
-git remote add fury https://git.fury.io/boxt/logga.git
-```
-
-And then push the new code to Gemfury:
-
-```sh
-git push fury master
-```
-
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ltello/logga.
+Bug reports and pull requests are welcome on GitHub at https://github.com/boxt/logga.
 
 ## License
 
