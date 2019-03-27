@@ -10,12 +10,12 @@ require "logga/version"
 Gem::Specification.new do |spec|
   spec.name          = "logga"
   spec.version       = Logga::VERSION
-  spec.authors       = ["Stuart Chinery, Lorenzo Tello"]
-  spec.email         = ["stuart.chinery@gmail.com, ltello8a@gmail.com"]
+  spec.authors       = ["Boxt"]
+  spec.email         = ["developers@boxt.co.uk"]
 
-  spec.summary       = "Extensions to ActiveRecord to log entries on model changes"
+  spec.summary       = "ActiveRecord log entries on model changes"
   spec.description   = "Extensions to ActiveRecord to log entries on model changes"
-  spec.homepage      = "https://github.com/ltello/logga"
+  spec.homepage      = "https://github.com/boxt/logga"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
