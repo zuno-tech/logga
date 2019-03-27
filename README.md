@@ -42,7 +42,7 @@ To release a new version, update the version number in `version.rb`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ltello/logga.
+Bug reports and pull requests are welcome on GitHub at https://github.com/boxt/logga.
 
 ## License
 
