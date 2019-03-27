@@ -70,7 +70,6 @@ nbproject
 *.rbc
 
 # RVM / rbenv
-.ruby-version
 .ruby-gemset
 .rvmrc
 
