@@ -29,7 +29,7 @@ end
 
 ```
 
-so that new LogEntry records attached to a given Order instance will be created whenever a new one is created or
+So that new LogEntry records attached to a given Order instance will be created whenever a new one is created or
 modified.
 
 ## Development
@@ -45,3 +45,8 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/ltello
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## TODOs
+
+* Write some tests
+* Improve the documentation
