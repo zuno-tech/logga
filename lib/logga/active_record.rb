@@ -26,6 +26,13 @@ module Logga
       end
     end
 
+    def log_field_changes(changes)
+      return if changes.blank?
+
+      body = field_changes_to_message(changes)
+      create_log_entry(author_data.merge(body: body)) if body.present?
+    end
+
     def log_model_creation
       return if should_not_log?
 
