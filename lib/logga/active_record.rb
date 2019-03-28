@@ -53,10 +53,7 @@ module Logga
       return if should_not_log?
 
       field_changes = previous_changes.reject { |k, _| reject_change?(k) }
-      return if field_changes.blank?
-
-      body = field_changes_to_message(field_changes)
-      create_log_entry(author_data.merge(body: body)) if body.present?
+      log_field_changes(field_changes)
     end
 
     private
