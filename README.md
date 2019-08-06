@@ -2,6 +2,8 @@
 
 Provides attribute logging functionality to ActiveRecord objects.
 
+[![CircleCI](https://circleci.com/gh/boxt/logga/tree/master.svg?style=svg&circle-token=f9550ac25744c292e3680638bad3d5deafb1c4e1)](https://circleci.com/gh/boxt/logga/tree/master)
+
 ## Installation
 
 Add this line to your application's Gemfile:
