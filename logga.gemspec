@@ -14,8 +14,8 @@ Gem::Specification.new do |spec|
   spec.email = ["developers@boxt.co.uk"]
   spec.summary = "ActiveRecord log entries on model changes"
   spec.description = "Extensions to ActiveRecord to log entries on model changes"
-  spec.homepage   = "https://github.com/boxt/logga"
-  spec.license    = "MIT"
+  spec.homepage = "https://github.com/boxt/logga"
+  spec.license = "MIT"
 
   spec.files = Dir[
     "lib/**/*",
