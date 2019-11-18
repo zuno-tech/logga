@@ -33,5 +33,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "byebug", "~> 10.0"
   spec.add_development_dependency "rake", "~> 13.0"
   spec.add_development_dependency "rspec", "~> 3.6"
-  spec.add_development_dependency "simplecov", "~> 0.16"
+  spec.add_development_dependency "simplecov", "~> 0.17"
 end
