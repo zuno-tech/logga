@@ -14,11 +14,15 @@ gem 'logga'
 
 And then execute:
 
-    $ bundle
+```sh
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install logga
+```sh
+gem install logga
+```
 
 ## Usage
 
@@ -28,7 +32,6 @@ Add this to your model:
 class Order < ApplicationRecord
   add_log_entries_for :create, :update
 end
-
 ```
 
 So that new LogEntry records attached to a given Order instance will be created whenever a new one is created or
