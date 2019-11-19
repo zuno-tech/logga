@@ -36,11 +36,13 @@ modified.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`.
 
-To release a new version, update the version number in `version.rb`.
+## Versioning
+
+The version of the gem should be set in the `VERSION` file found in the root of the project. This is then read by the `lib/boxt_aasm_ext/version.rb` file to set in the gem.
 
 ## Contributing
 
@@ -52,5 +54,5 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 ## TODOs
 
-* Write some tests
-* Improve the documentation
+- Write some tests
+- Improve the documentation

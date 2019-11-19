@@ -30,8 +30,13 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "boxt_ruby_style_guide", "~> 2.1"
   spec.add_development_dependency "bundler", "~> 2.0"
-  spec.add_development_dependency "byebug", "~> 10.0"
+  spec.add_development_dependency "byebug", "~> 5.0"
+  spec.add_development_dependency "factory_bot", "~> 4.8"
+  spec.add_development_dependency "minitest", "~> 5.13"
+  spec.add_development_dependency "minitest-bang", "~> 1.0"
+  spec.add_development_dependency "minitest-fail-fast", "~> 0.1"
+  spec.add_development_dependency "minitest-macos-notification", "~> 0.2"
+  spec.add_development_dependency "minitest-reporters", "~> 1.4"
   spec.add_development_dependency "rake", "~> 13.0"
-  spec.add_development_dependency "rspec", "~> 3.6"
   spec.add_development_dependency "simplecov", "~> 0.17"
 end

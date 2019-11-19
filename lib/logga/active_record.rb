@@ -4,13 +4,13 @@ module Logga
   module ActiveRecord
     extend ActiveSupport::Concern
 
-    EXCLUDED_KEYS          = %i[id created_at deleted_at initial updated_at log sent_after_sales_emails].freeze
+    EXCLUDED_KEYS = %i[id created_at deleted_at initial updated_at log sent_after_sales_emails].freeze
     EXCLUDED_KEYS_SUFFIXES = %i[_id _filenames].freeze
 
     included do
-      class_attribute :log_fields,      instance_writer: false
+      class_attribute :log_fields, instance_writer: false
       class_attribute :excluded_fields, instance_writer: false
-      self.log_fields      = {}
+      self.log_fields = {}
       self.excluded_fields = {}
     end
 
@@ -21,7 +21,7 @@ module Logga
         after_update  :log_model_changes  if actions.include?(:update)
         define_method(:log_receiver) { to == :self ? self : send(to) }
 
-        self.log_fields      = fields
+        self.log_fields = fields
         self.excluded_fields = Array(exclude_fields)
       end
     end
@@ -37,7 +37,7 @@ module Logga
       return if should_not_log?
 
       body_generator = ->(record) { default_creation_log_body(record) }
-      body           = log_fields.fetch(:created_at, body_generator).call(self)
+      body = log_fields.fetch(:created_at, body_generator).call(self)
       create_log_entry(author_data.merge(body: body, created_at: creation_at))
     end
 
@@ -45,7 +45,7 @@ module Logga
       return if should_not_log?
 
       body_generator = ->(record) { default_deletion_log_body(record) }
-      body           = log_fields.fetch(:deleted_at, body_generator).call(self)
+      body = log_fields.fetch(:deleted_at, body_generator).call(self)
       create_log_entry(author_data.merge(body: body))
     end
 
@@ -61,7 +61,7 @@ module Logga
     def author_data
       data = Hash(log_receiver.try(:author) || try(:author)).with_indifferent_access
       {
-        author_id:   data[:id],
+        author_id: data[:id],
         author_type: data[:type],
         author_name: data[:name]
       }
