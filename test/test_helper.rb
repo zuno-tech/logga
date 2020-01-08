@@ -17,7 +17,7 @@ require "minitest/reporters"
 
 Minitest::Reporters.use!(
   [
-    Minitest::Reporters::SpecReporter.new,
+    Minitest::Reporters::DefaultReporter.new,
     Minitest::Reporters::MacosNotificationReporter.new(title: "Logga gem")
   ],
   "test",
