@@ -25,8 +25,8 @@ Gem::Specification.new do |spec|
     "VERSION"
   ]
 
-  spec.add_runtime_dependency "activerecord", ">= 5.2"
-  spec.add_runtime_dependency "activesupport", ">= 5.2"
+  spec.add_runtime_dependency "activerecord", ">= 5.2", "~> 6.0"
+  spec.add_runtime_dependency "activesupport", ">= 5.2", "~> 6.0"
   spec.add_development_dependency "boxt_ruby_style_guide", "~> 4.2"
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "byebug", "~> 11.0"
