@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    logga (2.1.0)
+    logga (2.1.1)
       activerecord (~> 6.0, >= 5.2)
       activesupport (~> 6.0, >= 5.2)
 
