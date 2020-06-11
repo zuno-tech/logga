@@ -27,7 +27,7 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "activerecord", "~> 5.2"
   spec.add_runtime_dependency "activesupport", "~> 5.2"
-  spec.add_development_dependency "boxt_ruby_style_guide", "~> 4.2"
+  spec.add_development_dependency "boxt_ruby_style_guide", "~> 5.0"
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "byebug", "~> 11.0"
   spec.add_development_dependency "factory_bot", "~> 4.8"
