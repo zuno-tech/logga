@@ -3,7 +3,7 @@ jobs:
   build:
     parallelism: 1
     docker:
-      - image: circleci/ruby:2.7.0
+      - image: circleci/ruby:2.7.1
         environment:
           BUNDLE_JOBS: 3
           BUNDLE_RETRY: 3
@@ -30,7 +30,10 @@ jobs:
           paths:
             - vendor/bundle
       - run:
+          name: Run rubocop
+          command: bundle exec rubocop
+      - run:
           name: Run tests
-          command: bundle exec rake | circleci tests split --split-by=timings
+          command: bundle exec rake test
       - store_test_results:
           path: test_results
