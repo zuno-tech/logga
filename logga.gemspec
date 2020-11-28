@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "activerecord", ">= 5.2", "~> 6.0"
   spec.add_runtime_dependency "activesupport", ">= 5.2", "~> 6.0"
   # Lock style guide to specific version incase a new version is published with new breaking cops
-  spec.add_development_dependency "boxt_ruby_style_guide", "7.2.0"
+  spec.add_development_dependency "boxt_ruby_style_guide", "7.8.0"
   spec.add_development_dependency "bundler", "~> 2.1"
   spec.add_development_dependency "byebug", "~> 11.0"
   spec.add_development_dependency "rake", "~> 13.0"
