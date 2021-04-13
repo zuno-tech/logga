@@ -4,7 +4,8 @@ Provides attribute logging functionality to ActiveRecord objects.
 
 ## Requirements
 
-Requires Ruby 2.7.2 or above
+Requires Ruby 2.7.3 or above
+
 ## Installation
 
 Add this line to your application's Gemfile:
