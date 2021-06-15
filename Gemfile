@@ -7,7 +7,7 @@ gemspec
 
 group :development do
   # Lock style guide to specific version incase a new version is published with new breaking cops
-  gem "boxt_ruby_style_guide", "7.10.0"
+  gem "boxt_ruby_style_guide", "8.1.1"
   gem "bundler", "~> 2.1"
   gem "bundler-audit", "~> 0.8"
   gem "byebug", "~> 11.0"
