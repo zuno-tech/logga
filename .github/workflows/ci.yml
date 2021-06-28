@@ -23,7 +23,6 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
-      - run: bundle exec bundler-audit check --update
   lint:
     strategy:
       matrix:
