@@ -5,24 +5,28 @@ module Logga
     extend ActiveSupport::Concern
 
     EXCLUDED_KEYS = %i[id created_at deleted_at initial updated_at log sent_after_sales_emails].freeze
-    EXCLUDED_KEYS_SUFFIXES = %i[_id _filenames].freeze
+    EXCLUDED_SUFFIXES = %i[_id _filenames].freeze
 
     included do
-      class_attribute :log_fields, instance_writer: false
+      class_attribute :allowed_fields, instance_writer: false
       class_attribute :excluded_fields, instance_writer: false
+      class_attribute :log_fields, instance_writer: false
+
+      self.allowed_fields = []
+      self.excluded_fields = []
       self.log_fields = {}
-      self.excluded_fields = {}
     end
 
     class_methods do
-      def add_log_entries_for(*actions, to: :self, fields: {}, exclude_fields: [])
-        after_create  :log_model_creation if actions.include?(:create)
+      def add_log_entries_for(*actions, to: :self, fields: {}, allowed_fields: [], exclude_fields: [])
+        after_create :log_model_creation if actions.include?(:create)
         after_destroy :log_model_deletion if actions.include?(:delete)
-        after_update  :log_model_changes  if actions.include?(:update)
+        after_update :log_model_changes if actions.include?(:update)
         define_method(:log_receiver) { to == :self ? self : send(to) }
 
+        self.allowed_fields = Array(allowed_fields)
+        self.excluded_fields = allowed_fields.blank? ? Array(exclude_fields) : []
         self.log_fields = fields
-        self.excluded_fields = Array(exclude_fields)
       end
     end
 
@@ -105,10 +109,13 @@ module Logga
     end
 
     def reject_change?(key)
-      EXCLUDED_KEYS.include?(key.to_sym) ||
-        (!log_fields.include?(key.to_sym) &&
-         (excluded_fields.include?(key.to_sym) ||
-          EXCLUDED_KEYS_SUFFIXES.any? { |suffix| key.to_s.end_with?(suffix.to_s) }))
+      sym_key = key.to_sym
+      return false if allowed_fields.present? && allowed_fields.include?(sym_key)
+
+      EXCLUDED_KEYS.include?(sym_key) ||
+        (log_fields.exclude?(sym_key) &&
+         (excluded_fields.include?(sym_key) ||
+          EXCLUDED_SUFFIXES.any? { |suffix| key.to_s.end_with?(suffix.to_s) }))
     end
 
     def should_not_log?
