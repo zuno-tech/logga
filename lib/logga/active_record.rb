@@ -110,7 +110,7 @@ module Logga
 
     def reject_change?(key)
       sym_key = key.to_sym
-      return false if allowed_fields.present? && allowed_fields.include?(sym_key)
+      return allowed_fields.exclude?(sym_key) if allowed_fields.present?
 
       EXCLUDED_KEYS.include?(sym_key) ||
         (log_fields.exclude?(sym_key) &&
