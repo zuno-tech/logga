@@ -61,3 +61,4 @@ The gem is available as open source under the terms of the [MIT License](http://
 
 - Write some tests
 - Improve the documentation
+- Remove explicit `EXCLUDED_KEYS` and `EXCLUDED_SUFFIXES` for something that can be set in an initializer
