@@ -20,7 +20,7 @@ GEM
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
     ast (2.4.2)
-    boxt_ruby_style_guide (8.3.0)
+    boxt_ruby_style_guide (8.3.1)
       git (~> 1.4)
       rubocop (= 1.18.4)
       rubocop-faker (= 1.1.0)
@@ -103,7 +103,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  boxt_ruby_style_guide (= 8.3.0)
+  boxt_ruby_style_guide (= 8.3.1)
   byebug (~> 11.0)
   logga!
   rake (~> 13.0)
