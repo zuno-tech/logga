@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem "boxt_ruby_style_guide", "~> 8.3"
+  gem "boxt_ruby_style_guide", "~> 8.4"
   gem "byebug", "~> 11.0"
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.9"
