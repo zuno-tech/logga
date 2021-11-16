@@ -16,6 +16,9 @@ Gem::Specification.new do |spec|
   spec.description = "Extensions to ActiveRecord to log entries on model changes"
   spec.homepage = "https://github.com/boxt/logga"
   spec.license = "MIT"
+  spec.metadata = {
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files = Dir[
     "lib/**/*",
