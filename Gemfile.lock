@@ -2,18 +2,18 @@ PATH
   remote: .
   specs:
     logga (2.2.0)
-      activerecord (~> 6.0, >= 5.2)
+      activerecord (>= 6, < 8)
       activesupport (~> 6.0, >= 5.2)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activerecord (6.1.4.1)
-      activemodel (= 6.1.4.1)
-      activesupport (= 6.1.4.1)
-    activesupport (6.1.4.1)
+    activemodel (6.1.4.4)
+      activesupport (= 6.1.4.4)
+    activerecord (6.1.4.4)
+      activemodel (= 6.1.4.4)
+      activesupport (= 6.1.4.4)
+    activesupport (6.1.4.4)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -37,7 +37,7 @@ GEM
       rchardet (~> 1.8)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
-    minitest (5.14.4)
+    minitest (5.15.0)
     parallel (1.21.0)
     parser (3.0.2.0)
       ast (~> 2.4.1)

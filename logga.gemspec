@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
     "VERSION"
   ]
 
-  spec.add_runtime_dependency "activerecord", ">= 5.2", "~> 6.0"
+  spec.add_runtime_dependency "activerecord", ">= 6", "< 8"
   spec.add_runtime_dependency "activesupport", ">= 5.2", "~> 6.0"
 end
