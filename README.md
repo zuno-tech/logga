@@ -2,6 +2,9 @@
 
 Provides attribute logging functionality to ActiveRecord objects.
 
+[![Gem Version](https://badge.fury.io/rb/logga.svg)](https://badge.fury.io/rb/logga)
+[![CI](https://github.com/boxt/logga/actions/workflows/ci.yml/badge.svg)](https://github.com/boxt/logga/actions/workflows/ci.yml)
+
 ## Requirements
 
 Requires Ruby 2.7.3 or above
