@@ -7,7 +7,7 @@ Provides attribute logging functionality to ActiveRecord objects.
 
 ## Requirements
 
-Requires Ruby 2.7.3 or above
+* Ruby 2.7 or above
 
 ## Installation
 
