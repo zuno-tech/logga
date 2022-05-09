@@ -5,7 +5,7 @@ source "https://rubygems.org"
 gemspec
 
 group :development do
-  gem "boxt_rubocop", "0.0.6"
+  gem "boxt_rubocop", "0.0.7"
   gem "byebug", "~> 11.0"
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.9"
