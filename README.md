@@ -98,9 +98,9 @@ Add an initializer to your project:
 
 ```ruby
 Logga.configure do |config|
-  enabled: true,
-  excluded_fields: [], # Default array of excluded fields i.e. [:id] to ignore all :id fields for every object
-  excluded_suffixes: [] # Array of excluded suffixes i.e. [:_id] to ignore all fields that end in :_id for every object
+  config.enabled = true
+  config.excluded_fields = [] # Default array of excluded fields i.e. [:id] to ignore all :id fields for every object
+  config.excluded_suffixes = [] # Array of excluded suffixes i.e. [:_id] to ignore all fields that end in :_id for every object
 end
 ```
 
@@ -108,8 +108,8 @@ For example:
 
 ```ruby
 Logga.configure do |config|
-  excluded_fields: [:id], # Don't log any id changes
-  excluded_suffixes: [_id] # Don't log any column that ends in _id
+  config.excluded_fields = [:id] # Don't log any id changes
+  config.excluded_suffixes = [_id] # Don't log any column that ends in _id
 end
 ```
 
