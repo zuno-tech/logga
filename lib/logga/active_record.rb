@@ -116,10 +116,11 @@ module Logga
     def reject_change?(key)
       sym_key = key.to_sym
       return allowed_fields.exclude?(sym_key) if allowed_fields.present?
-      return true if config_excluded_fields.include?(sym_key)
-      return true if config_excluded_suffixes.any? { |suffix| key.to_s.end_with?(suffix.to_s) }
 
-      fields.exclude?(sym_key) && excluded_fields.include?(sym_key)
+      config_excluded_fields.include?(sym_key) ||
+        (fields.exclude?(sym_key) &&
+         (excluded_fields.include?(sym_key) ||
+          config_excluded_suffixes.any? { |suffix| key.to_s.end_with?(suffix.to_s) }))
     end
 
     def should_log?
