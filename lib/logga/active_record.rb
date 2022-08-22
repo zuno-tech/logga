@@ -7,11 +7,11 @@ module Logga
     included do
       class_attribute :allowed_fields, instance_writer: false
       class_attribute :excluded_fields, instance_writer: false
-      class_attribute :log_fields, instance_writer: false
+      class_attribute :fields, instance_writer: false
 
       self.allowed_fields = []
       self.excluded_fields = []
-      self.log_fields = {}
+      self.fields = {}
     end
 
     class_methods do
@@ -23,7 +23,7 @@ module Logga
 
         self.allowed_fields = Array(allowed_fields)
         self.excluded_fields = allowed_fields.blank? ? Array(exclude_fields) : []
-        self.log_fields = fields
+        self.fields = fields
       end
     end
 
@@ -40,7 +40,7 @@ module Logga
       return unless should_log?
 
       body_generator = ->(record) { default_creation_log_body(record) }
-      body = log_fields.fetch(:created_at, body_generator).call(self)
+      body = fields.fetch(:created_at, body_generator).call(self)
       create_log_entry(author_data.merge(body: body, created_at: creation_at))
     end
 
@@ -48,7 +48,7 @@ module Logga
       return unless should_log?
 
       body_generator = ->(record) { default_deletion_log_body(record) }
-      body = log_fields.fetch(:deleted_at, body_generator).call(self)
+      body = fields.fetch(:deleted_at, body_generator).call(self)
       create_log_entry(author_data.merge(body: body))
     end
 
@@ -109,7 +109,7 @@ module Logga
         default_change_log_body(record, field, old_value, new_value)
       }
       changes.inject([]) do |result, (field, (old_value, new_value))|
-        result << log_fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
+        result << fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
       end.compact.join("\n")
     end
 
@@ -117,10 +117,9 @@ module Logga
       sym_key = key.to_sym
       return allowed_fields.exclude?(sym_key) if allowed_fields.present?
       return true if config_excluded_fields.include?(sym_key)
-      return true if excluded_fields.include?(sym_key)
       return true if config_excluded_suffixes.any? { |suffix| key.to_s.end_with?(suffix.to_s) }
 
-      log_fields.include?(sym_key)
+      fields.exclude?(sym_key) && excluded_fields.include?(sym_key)
     end
 
     def should_log?
