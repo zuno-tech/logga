@@ -6,11 +6,11 @@ gemspec
 
 group :development do
   gem "activerecord", "~> 7.0"
-  gem "boxt_rubocop", "0.0.31"
+  gem "boxt_rubocop", "0.0.33"
   gem "byebug", "~> 11.0"
   gem "rake", "~> 13.0"
   gem "rspec", "~> 3.12"
-  gem "simplecov", "~> 0.17"
+  gem "simplecov", "~> 0.22"
   gem "sqlite3", "~> 1.5"
   gem "timecop", "~> 0.9"
   gem "with_model", "~> 2.1"
