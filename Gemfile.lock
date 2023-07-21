@@ -19,7 +19,7 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
     ast (2.4.2)
-    boxt_rubocop (0.0.40)
+    boxt_rubocop (0.0.41)
       rubocop (= 1.54.2)
       rubocop-faker (= 1.1.0)
       rubocop-rails (= 2.20.2)
@@ -117,7 +117,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 7.0)
-  boxt_rubocop (= 0.0.40)
+  boxt_rubocop (= 0.0.41)
   byebug (~> 11.0)
   logga!
   rake (~> 13.0)
