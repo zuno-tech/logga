@@ -109,8 +109,8 @@ GEM
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.4.2)
-    with_model (2.1.6)
-      activerecord (>= 5.2)
+    with_model (2.1.7)
+      activerecord (>= 6.0)
 
 PLATFORMS
   arm64-darwin-20
