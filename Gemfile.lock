@@ -20,7 +20,7 @@ GEM
       tzinfo (~> 2.0)
     ast (2.4.2)
     base64 (0.1.1)
-    boxt_rubocop (0.0.46)
+    boxt_rubocop (0.0.47)
       rubocop (= 1.56.3)
       rubocop-faker (= 1.1.0)
       rubocop-performance (= 1.19.1)
@@ -123,7 +123,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 7.0)
-  boxt_rubocop (= 0.0.46)
+  boxt_rubocop (= 0.0.47)
   byebug (~> 11.0)
   logga!
   rake (~> 13.0)
