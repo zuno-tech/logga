@@ -7,7 +7,7 @@ Provides attribute logging functionality to ActiveRecord objects.
 
 ## Requirements
 
-* Ruby 2.7 or above
+- Ruby >= 3.0
 
 ## Installation
 
@@ -36,10 +36,10 @@ Add the following to your model:
 ```ruby
 class Thing < ApplicationRecord
   # Optional author accessor. See #author
-  attr_accessor :author 
+  attr_accessor :author
 
   # Association to :log_entries, which the loggable object must response to for logging.
-  has_many :log_entries, as: :loggable, dependent: :destroy 
+  has_many :log_entries, as: :loggable, dependent: :destroy
 
   add_log_entries_for(
     :create, # Log on object create
