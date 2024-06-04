@@ -26,4 +26,5 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby }}
+          rubygems: "3.3.22"
       - run: bundle exec rake test
