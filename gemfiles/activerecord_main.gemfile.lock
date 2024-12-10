@@ -160,7 +160,7 @@ DEPENDENCIES
   activerecord!
   appraisal (~> 2.5)
   boxt_rubocop (= 2.15.0)
-  byebug (~> 11.0)
+  byebug (~> 11.1)
   logga!
   rake (~> 13.2)
   rspec (~> 3.13)
