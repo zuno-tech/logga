@@ -80,13 +80,13 @@ module Logga
     end
 
     def create_log_entry(entry)
-      log_receiver&.log_entries&.create(entry)
+      log_receiver.log_entries&.create(entry)
     end
 
     def creation_at
       return Time.current unless log_receiver == self
 
-      (log_receiver&.log_entries&.order(:created_at)&.first&.created_at || Time.current) - 0.1.seconds
+      (log_receiver.log_entries.order(:created_at).first&.created_at || Time.current) - 0.1.seconds
     end
 
     def default_creation_log_body(record)
