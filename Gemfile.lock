@@ -1,20 +1,20 @@
 PATH
   remote: .
   specs:
-    logga (5.0.0)
+    logga (6.0.0)
       activerecord (>= 7, < 9)
       activesupport (>= 7, < 9)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activemodel (8.0.0)
-      activesupport (= 8.0.0)
-    activerecord (8.0.0)
-      activemodel (= 8.0.0)
-      activesupport (= 8.0.0)
+    activemodel (8.0.0.1)
+      activesupport (= 8.0.0.1)
+    activerecord (8.0.0.1)
+      activemodel (= 8.0.0.1)
+      activesupport (= 8.0.0.1)
       timeout (>= 0.4.0)
-    activesupport (8.0.0)
+    activesupport (8.0.0.1)
       base64
       benchmark (>= 0.3)
       bigdecimal
