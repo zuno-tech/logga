@@ -7,7 +7,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "logga/version"
 
 Gem::Specification.new do |spec|
-  spec.required_ruby_version = ">= 3.0"
+  spec.required_ruby_version = ">= 3.1"
   spec.name = "logga"
   spec.version = Logga::VERSION
   spec.authors = ["Boxt"]
@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
     "VERSION"
   ]
 
-  spec.add_dependency "activerecord", ">= 6", "< 8"
-  spec.add_dependency "activesupport", ">= 6", "< 8"
+  spec.add_dependency "activerecord", ">= 7", "< 9"
+  spec.add_dependency "activesupport", ">= 7", "< 9"
 end

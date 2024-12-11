@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     logga (5.0.0)
       activerecord (>= 7, < 9)
@@ -143,7 +143,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  activerecord (~> 8.0)
+  activerecord (~> 8.0.0)
   appraisal (~> 2.5)
   boxt_rubocop (= 2.15.0)
   byebug (~> 11.1)
@@ -151,7 +151,7 @@ DEPENDENCIES
   rake (~> 13.2)
   rspec (~> 3.13)
   simplecov (~> 0.22)
-  sqlite3 (~> 2.1)
+  sqlite3 (~> 2.0)
   timecop (~> 0.9)
   with_model (~> 2.1)
 
