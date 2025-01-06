@@ -6,6 +6,7 @@ gemspec
 
 gem "activerecord", "~> 8.0"
 gem "appraisal", "~> 2.5"
+gem "bigdecimal", "~> 3.1"
 gem "boxt_rubocop", "2.15.0"
 gem "byebug", "~> 11.1"
 gem "rake", "~> 13.2"
