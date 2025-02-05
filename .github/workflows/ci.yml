@@ -49,4 +49,4 @@ jobs:
         with:
           bundler-cache: true
           ruby-version: ${{ matrix.ruby.version }}
-      - run: bundle exec rake test
+      - run: bundle exec rake spec
