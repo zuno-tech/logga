@@ -28,6 +28,6 @@ Gem::Specification.new do |spec|
     "VERSION"
   ]
 
-  spec.add_dependency "activerecord", ">= 7", "< 9"
-  spec.add_dependency "activesupport", ">= 7", "< 9"
+  spec.add_dependency "activerecord", ">= 7.1.0", "< 9"
+  spec.add_dependency "activesupport", ">= 7.1.0", "< 9"
 end
