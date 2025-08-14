@@ -33,7 +33,7 @@ module Logga
       body = field_changes_to_message(changes)
       return if body.blank?
 
-      create_log_entry(author_data.merge(body: body))
+      create_log_entry(author_data.merge(body:))
     end
 
     def log_model_creation
@@ -41,7 +41,7 @@ module Logga
 
       body_generator = ->(record) { default_creation_log_body(record) }
       body = fields.fetch(:created_at, body_generator).call(self)
-      create_log_entry(author_data.merge(body: body, created_at: creation_at))
+      create_log_entry(author_data.merge(body:, created_at: creation_at))
     end
 
     def log_model_deletion
@@ -49,7 +49,7 @@ module Logga
 
       body_generator = ->(record) { default_deletion_log_body(record) }
       body = fields.fetch(:deleted_at, body_generator).call(self)
-      create_log_entry(author_data.merge(body: body))
+      create_log_entry(author_data.merge(body:))
     end
 
     def log_model_changes
