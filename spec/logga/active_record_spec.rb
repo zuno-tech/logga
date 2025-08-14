@@ -86,7 +86,7 @@ RSpec.describe Logga::ActiveRecord do
     end
 
     let(:stuff) { Stuff.create!(name: "Some Stuff") }
-    let(:thing) { Thing.new(name: "Some Thing", active: true, stuff: stuff) }
+    let(:thing) { Thing.new(name: "Some Thing", active: true, stuff:) }
 
     context "without an author" do
       before { thing.save! }
