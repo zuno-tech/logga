@@ -2,8 +2,8 @@ PATH
   remote: ..
   specs:
     logga (6.0.0)
-      activerecord (>= 7, < 9)
-      activesupport (>= 7, < 9)
+      activerecord (>= 7.1.0, < 9)
+      activesupport (>= 7.1.0, < 9)
 
 GEM
   remote: https://rubygems.org/
