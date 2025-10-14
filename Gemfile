@@ -6,7 +6,7 @@ gemspec
 
 gem "activerecord", "~> 8.0"
 gem "appraisal", "~> 2.5"
-gem "bigdecimal", "~> 3.2"
+gem "bigdecimal", "~> 3.3"
 gem "byebug", "~> 12.0"
 gem "rake", "~> 13.3"
 gem "rspec", "~> 3.13"
