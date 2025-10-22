@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 gemspec
 
-gem "activerecord", "~> 8.0"
+gem "activerecord", "~> 8.1"
 gem "appraisal", "~> 2.5"
 gem "bigdecimal", "~> 3.3"
 gem "byebug", "~> 12.0"
