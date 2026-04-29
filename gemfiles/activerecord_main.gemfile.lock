@@ -27,7 +27,7 @@ GIT
 PATH
   remote: ..
   specs:
-    logga (7.0.0)
+    logga (7.1.0)
       activerecord (>= 7.1.0, < 9)
       activesupport (>= 7.1.0, < 9)
 
