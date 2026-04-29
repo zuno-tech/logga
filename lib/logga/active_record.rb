@@ -6,8 +6,6 @@ module Logga
 
     included do
       class_attribute :logga_options, instance_writer: false
-
-      # self.logga_options = nil
     end
 
     class_methods do
@@ -40,8 +38,6 @@ module Logga
       def define_logga_receiver_method
         define_method(:log_receiver) { send(logga_options[:to]) }
       end
-
-      private :configure_logga_options, :setup_logga_callbacks, :define_logga_receiver_method
     end
 
     def log_field_changes(changes)
