@@ -3,7 +3,7 @@
 Provides attribute logging functionality to ActiveRecord objects.
 
 [![Gem Version](https://badge.fury.io/rb/logga.svg)](https://badge.fury.io/rb/logga)
-[![CI](https://github.com/boxt/logga/actions/workflows/ci.yml/badge.svg)](https://github.com/boxt/logga/actions/workflows/ci.yml)
+[![CI](https://github.com/zuno-tech/logga/actions/workflows/ci.yml/badge.svg)](https://github.com/zuno-tech/logga/actions/workflows/ci.yml)
 
 ## Requirements
 
@@ -144,7 +144,7 @@ To install this gem onto your local machine, run `bundle exec rake install`.
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/boxt/logga.
+Bug reports and pull requests are welcome on GitHub at https://github.com/zuno-tech/logga.
 
 ## License
 

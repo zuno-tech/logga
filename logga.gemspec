@@ -10,11 +10,11 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = ">= 3.2"
   spec.name = "logga"
   spec.version = Logga::VERSION
-  spec.authors = ["Boxt"]
-  spec.email = ["developers@boxt.co.uk"]
+  spec.authors = ["Zuno Tech"]
+  spec.email = ["developers@zuno.tech"]
   spec.summary = "ActiveRecord log entries on model changes"
   spec.description = "Extensions to ActiveRecord to log entries on model changes"
-  spec.homepage = "https://github.com/boxt/logga"
+  spec.homepage = "https://github.com/zuno-tech/logga"
   spec.license = "MIT"
   spec.metadata = {
     "rubygems_mfa_required" => "true"
