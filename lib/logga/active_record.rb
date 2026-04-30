@@ -5,25 +5,38 @@ module Logga
     extend ActiveSupport::Concern
 
     included do
-      class_attribute :allowed_fields, instance_writer: false
-      class_attribute :excluded_fields, instance_writer: false
-      class_attribute :fields, instance_writer: false
-
-      self.allowed_fields = []
-      self.excluded_fields = []
-      self.fields = {}
+      class_attribute :logga_options, instance_writer: false
     end
 
     class_methods do
-      def add_log_entries_for(*actions, allowed_fields: [], exclude_fields: [], fields: {}, to: :self)
+      def add_log_entries_for(*actions, **options)
+        configure_logga_options(options)
+        setup_logga_callbacks(actions)
+        define_logga_receiver_method
+      end
+
+      def configure_logga_options(options)
+        default_logga_options = {
+          allowed_fields: [],
+          excluded_fields: [],
+          fields: {},
+          class_name: nil,
+          to: :itself
+        }
+        self.logga_options = default_logga_options.merge(options.slice(:allowed_fields, :fields, :class_name, :to))
+        return if options[:allowed_fields].present?
+
+        self.logga_options = logga_options.merge(excluded_fields: options[:exclude_fields] || [])
+      end
+
+      def setup_logga_callbacks(actions)
         after_create :log_model_creation if actions.include?(:create)
         after_destroy :log_model_deletion if actions.include?(:delete)
         after_update :log_model_changes if actions.include?(:update)
-        define_method(:log_receiver) { to == :self ? self : send(to) }
+      end
 
-        self.allowed_fields = Array(allowed_fields)
-        self.excluded_fields = allowed_fields.blank? ? Array(exclude_fields) : []
-        self.fields = fields
+      def define_logga_receiver_method
+        define_method(:log_receiver) { send(logga_options[:to]) }
       end
     end
 
@@ -40,7 +53,7 @@ module Logga
       return unless should_log?
 
       body_generator = ->(record) { default_creation_log_body(record) }
-      body = fields.fetch(:created_at, body_generator).call(self)
+      body = logga_options[:fields].fetch(:created_at, body_generator).call(self)
       create_log_entry(author_data.merge(body:, created_at: creation_at))
     end
 
@@ -48,7 +61,7 @@ module Logga
       return unless should_log?
 
       body_generator = ->(record) { default_deletion_log_body(record) }
-      body = fields.fetch(:deleted_at, body_generator).call(self)
+      body = logga_options[:fields].fetch(:deleted_at, body_generator).call(self)
       create_log_entry(author_data.merge(body:))
     end
 
@@ -109,18 +122,22 @@ module Logga
         default_change_log_body(record, field, old_value, new_value)
       }
       changes.inject([]) do |result, (field, (old_value, new_value))|
-        result << fields.fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
+        result << logga_options[:fields].fetch(field.to_sym, body_generator).call(self, field, old_value, new_value)
       end.compact.join("\n")
     end
 
     def reject_change?(key)
       sym_key = key.to_sym
-      return allowed_fields.exclude?(sym_key) if allowed_fields.present?
+      return logga_options[:allowed_fields].exclude?(sym_key) if logga_options[:allowed_fields].present?
 
+      excluded_change?(key, sym_key)
+    end
+
+    def excluded_change?(key, sym_key)
       config_excluded_fields.include?(sym_key) ||
-        (fields.exclude?(sym_key) &&
-         (excluded_fields.include?(sym_key) ||
-          config_excluded_suffixes.any? { |suffix| key.to_s.end_with?(suffix.to_s) }))
+        (logga_options[:fields].exclude?(sym_key) &&
+          (logga_options[:excluded_fields].include?(sym_key) ||
+             config_excluded_suffixes.any? { |suffix| key.to_s.end_with?(suffix.to_s) }))
     end
 
     def should_log?
@@ -128,7 +145,7 @@ module Logga
     end
 
     def titleized_model_class_name(record)
-      record.class.name.demodulize.titleize
+      logga_options[:class_name] || record.class.name.demodulize.titleize
     end
   end
 end

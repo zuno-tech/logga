@@ -262,4 +262,32 @@ RSpec.describe Logga::ActiveRecord do
 
     it { expect(stuff.log_entries.count).to eq(0) }
   end
+
+  describe "with custom class_name" do
+    with_model :stuff do
+      table do |t|
+        t.string :name
+        t.boolean :active
+        t.timestamps null: false
+      end
+
+      model do
+        attr_accessor :author
+
+        has_many :log_entries, as: :loggable, dependent: :destroy
+        add_log_entries_for :create, :update, class_name: "Custom Class Name"
+      end
+    end
+
+    let(:stuff) { Stuff.new(name: "Some Stuff", active: true) }
+
+    before do
+      stuff.save!
+      stuff.update!(active: false)
+    end
+
+    it { expect(stuff.log_entries.count).to eq(2) }
+    it { expect(stuff.log_entries[0].body).to eq("Custom Class Name created") }
+    it { expect(stuff.log_entries[1].body).to eq("Custom Class Name active set to false") }
+  end
 end

@@ -79,7 +79,7 @@ add_log_entries_for(
 )
 ```
 
-This is with the exeception on `:created_at` which only takes the created record.
+This is with the exception on `:created_at` which only takes the created record.
 
 ```ruby
 add_log_entries_for(
@@ -111,6 +111,29 @@ Logga.configure do |config|
   config.excluded_fields = [:id] # Don't log any id changes
   config.excluded_suffixes = [_id] # Don't log any column that ends in _id
 end
+```
+
+## Class Name
+
+Logga automatically figures out class names and construct a sensible log line if you have not provided one. It `.demodulize` and `.titelize` the model class name to come up with the log line.
+
+However in some cases, it may be desirable to override the default name. To support such cases, you can pass in class_name param:
+
+```ruby
+  add_log_entries_for(
+    :create, # Log on object create
+    :update, # Log on object update
+    class_name: "My Class"
+  )
+```
+
+This will result in log lines like following:
+
+```ruby
+my_model.update(active: true)
+
+# will result in log entry as follows:
+# "My Class active set to true"
 ```
 
 ## Development
