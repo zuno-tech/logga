@@ -115,7 +115,21 @@ end
 
 ## Class Name
 
-Logga automatically figures out class names and construct a sensible log line if you have not provided one. It `.demodulize` and `.titelize` the model class name to come up with the log line.
+Logga automatically figures out class names and construct a sensible log line if you have not provided one. It `.demodulize` and `.humanize` the model class name to come up with the log line.
+
+```ruby
+class MyAmazingModel < ApplicationRecord
+  add_log_entries_for(
+    :create, # Log on object create
+    :update, # Log on object update
+  )
+end
+
+MyAmazingModel.last.update(active: true)
+
+# will result in log entry as follows:
+# "My amazing model active set to true"
+```
 
 However in some cases, it may be desirable to override the default name. To support such cases, you can pass in class_name param:
 
@@ -123,7 +137,7 @@ However in some cases, it may be desirable to override the default name. To supp
   add_log_entries_for(
     :create, # Log on object create
     :update, # Log on object update
-    class_name: "My Class"
+    class_name: "My class"
   )
 ```
 
@@ -133,7 +147,7 @@ This will result in log lines like following:
 my_model.update(active: true)
 
 # will result in log entry as follows:
-# "My Class active set to true"
+# "My class active set to true"
 ```
 
 ## Development
