@@ -145,7 +145,7 @@ module Logga
     end
 
     def titleized_model_class_name(record)
-      logga_options[:class_name] || record.class.name.demodulize.titleize
+      logga_options[:class_name] || record.class.name.demodulize.underscore.humanize
     end
   end
 end
