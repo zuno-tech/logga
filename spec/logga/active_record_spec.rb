@@ -16,7 +16,7 @@ RSpec.describe Logga::ActiveRecord do
   let(:fake_author) { { id: "1", name: "Foo", type: "User" } }
 
   describe "creating stuff" do
-    with_model :stuff do
+    with_model :standard_stuff do
       table do |t|
         t.string :name
         t.boolean :active
@@ -31,13 +31,13 @@ RSpec.describe Logga::ActiveRecord do
       end
     end
 
-    let(:stuff) { Stuff.new(name: "Some Stuff", active: true) }
+    let(:stuff) { StandardStuff.new(name: "Some Stuff", active: true) }
 
     context "without an author" do
       before { stuff.save! }
 
       it { expect(stuff.log_entries.count).to eq(1) }
-      it { expect(stuff.log_entries[0].body).to eq("Stuff created") }
+      it { expect(stuff.log_entries[0].body).to eq("Standard stuff created") }
     end
 
     context "with an author" do
@@ -47,7 +47,7 @@ RSpec.describe Logga::ActiveRecord do
       end
 
       it { expect(stuff.log_entries.count).to eq(1) }
-      it { expect(stuff.log_entries[0].body).to eq("Stuff created") }
+      it { expect(stuff.log_entries[0].body).to eq("Standard stuff created") }
       it { expect(stuff.log_entries[0].author_id).to eq("1") }
       it { expect(stuff.log_entries[0].author_name).to eq("Foo") }
       it { expect(stuff.log_entries[0].author_type).to eq("User") }
